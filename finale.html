@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joyeuse Saint-Valentin ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+
+<body class="finale-page">
+    <!-- Canvas pour confettis -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/logo.svg" alt="Mélène Logo" class="logo-img">
+                <span>Mélène</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="memories.html">Tes Photos</a></li>
+                <li><a href="letter.html">Ma Lettre</a></li>
+                <li><a href="videos.html">Tes Vidéos</a></li>
+                <li><a href="finale.html" class="active">Surprise</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Section Finale -->
+    <section class="finale-section">
+        <div class="finale-background">
+            <video autoplay muted loop playsinline>
+                <source src="assets/video_2026-02-13_19-11-20.mp4" type="video/mp4">
+            </video>
+            <div class="finale-overlay"></div>
+        </div>
+
+        <div class="finale-content">
+            <div class="countdown-container" id="countdownContainer">
+                <h2 class="countdown-title">Ton cadeau arrive dans...</h2>
+                <div class="countdown-number" id="countdownNumber">3</div>
+            </div>
+
+            <div class="message-container hidden" id="messageContainer">
+                <h1 class="finale-title">
+                    <span class="title-line">Joyeuse</span>
+                    <span class="title-line">Saint-Valentin</span>
+                    <span class="title-line">Mélène ❤️</span>
+                </h1>
+
+                <div class="finale-message">
+                    <p class="finale-text">
+                        Merci d'être toi. Merci pour tous ces moments ensemble.
+                    </p>
+                    <p class="finale-text">
+                        Merci pour tes sourires, tes rires, même tes bouderies adorables.
+                    </p>
+                    <p class="finale-text highlight">
+                        Je t'aime plus que les mots ne peuvent le dire.
+                    </p>
+                </div>
+
+                <button class="celebration-btn" id="celebrationBtn">
+                    <span>Célébrons ! 🎉</span>
+                </button>
+
+                <div class="secret-message hidden" id="secretMessage">
+                    <div class="secret-content">
+                        <h3>Message Secret 💌</h3>
+                        <p>
+                            "Dans un monde où tout change constamment,
+                            une chose reste certaine : mon amour pour toi."
+                        </p>
+                        <p class="secret-signature">
+                            - Ton Valentin qui t'aime ❤️
+                        </p>
+                    </div>
+                </div>
+
+                <div class="finale-actions">
+                    <a href="index.html" class="action-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                        </svg>
+                        Retour au début
+                    </a>
+                    <button class="action-btn" onclick="window.print()">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5-5 5 5M12 15V4" />
+                        </svg>
+                        Sauvegarder
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Countdown
+        const countdownContainer = document.getElementById('countdownContainer');
+        const countdownNumber = document.getElementById('countdownNumber');
+        const messageContainer = document.getElementById('messageContainer');
+        const celebrationBtn = document.getElementById('celebrationBtn');
+        const secretMessage = document.getElementById('secretMessage');
+
+        let count = 3;
+        const countdownInterval = setInterval(() => {
+            count--;
+            if (count > 0) {
+                countdownNumber.textContent = count;
+                countdownNumber.style.animation = 'none';
+                setTimeout(() => {
+                    countdownNumber.style.animation = 'countdownPulse 1s ease';
+                }, 10);
+            } else {
+                clearInterval(countdownInterval);
+                countdownContainer.classList.add('fade-out');
+                setTimeout(() => {
+                    countdownContainer.style.display = 'none';
+                    messageContainer.classList.remove('hidden');
+                    messageContainer.classList.add('fade-in');
+                }, 500);
+            }
+        }, 1000);
+
+        // Confettis
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let confettiActive = false;
+        let confettiParticles = [];
+
+        class Confetti {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = -10;
+                this.size = Math.random() * 8 + 4;
+                this.speedY = Math.random() * 3 + 2;
+                this.speedX = Math.random() * 2 - 1;
+                this.color = ['#FF1744', '#F50057', '#FF4081', '#FFD700', '#FF69B4'][Math.floor(Math.random() * 5)];
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 10 - 5;
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                this.rotation += this.rotationSpeed;
+
+                if (this.y > canvas.height) {
+                    this.y = -10;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation * Math.PI / 180);
+                ctx.fillStyle = this.color;
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                ctx.restore();
+            }
+        }
+
+        function createConfetti() {
+            for (let i = 0; i < 150; i++) {
+                confettiParticles.push(new Confetti());
+            }
+        }
+
+        function animateConfetti() {
+            if (!confettiActive) return;
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            confettiParticles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            requestAnimationFrame(animateConfetti);
+        }
+
+        // Bouton célébration
+        celebrationBtn.addEventListener('click', () => {
+            if (!confettiActive) {
+                confettiActive = true;
+                createConfetti();
+                animateConfetti();
+                celebrationBtn.textContent = '🎊 C\'est la fête ! 🎊';
+                celebrationBtn.style.animation = 'pulse 1s infinite';
+
+                // Afficher le message secret après 2 secondes
+                setTimeout(() => {
+                    secretMessage.classList.remove('hidden');
+                    secretMessage.classList.add('fade-in');
+                }, 2000);
+            }
+        });
+
+        // Resize canvas
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

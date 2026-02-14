@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pour Mélène ❤️ | Saint-Valentin 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+
+<body>
+    <!-- Canvas pour les particules de coeurs -->
+    <canvas id="hearts-canvas"></canvas>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/logo.svg" alt="Mélène Logo" class="logo-img">
+                <span>Mélène</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html" class="active">Accueil</a></li>
+                <li><a href="memories.html">Tes Photos</a></li>
+                <li><a href="letter.html">Ma Lettre</a></li>
+                <li><a href="videos.html">Tes Vidéos</a></li>
+                <li><a href="finale.html">Surprise</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contrôle de musique -->
+    <div class="music-controls">
+        <button id="musicToggle" aria-label="Musique">
+            ♫
+        </button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="video-background">
+            <video autoplay muted loop playsinline id="heroVideo">
+                <source src="assets/video_2026-02-13_19-11-20.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="line-1">Pour Mélène</span>
+                <span class="heart-icon">❤️</span>
+            </h1>
+            <p class="hero-subtitle">
+                <span class="typing-text">Avec tout mon amour, cette Saint-Valentin</span>
+            </p>
+            <a href="memories.html" class="cta-button">
+                <span>Découvre ton cadeau</span>
+                <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </a>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <p>Scroll</p>
+        </div>
+    </section>
+
+    <!-- Section À propos de nous -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2 class="section-title">Pour Toi</h2>
+                    <p class="about-description">
+                        Mélène... Tu es unique. Parfois tu m'émerveilles, parfois tu m'exaspères
+                        (oui, quand tu changes d'avis 10 fois pour choisir un resto 😅).
+                        Mais c'est exactement ça que j'aime chez toi.
+                    </p>
+                    <p class="about-description">
+                        J'ai rassemblé tes photos et vidéos pour te montrer à quel point tu es belle,
+                        à quel point tu comptes pour moi. Cette Saint-Valentin, je voulais te créer
+                        quelque chose de spécial, rien que pour toi.
+                    </p>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">365+</div>
+                            <div class="stat-label">Jours ensemble</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">∞</div>
+                            <div class="stat-label">Fous rires</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1000+</div>
+                            <div class="stat-label">Je t'aime</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">1</div>
+                            <div class="stat-label">Avenir à construire</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <div class="image-frame">
+                        <img src="assets/photo_2026-02-13_19-11-41.jpg" alt="Mélène" loading="lazy">
+                        <div class="image-overlay"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Pourquoi je t'aime -->
+    <section class="reasons-section">
+        <div class="container">
+            <h2 class="section-title centered">Pourquoi je t'aime</h2>
+            <p class="section-subtitle">Même avec tous tes petits défauts adorables...</p>
+
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <div class="reason-icon">😍</div>
+                    <h3>Ton sourire</h3>
+                    <p>Qui illumine ma journée, même quand tu es de mauvaise humeur (ce qui arrive... souvent 😅)</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">🤪</div>
+                    <h3>Ton côté imprévisible</h3>
+                    <p>Tu changes d'avis comme de chemise, mais c'est ce qui rend chaque jour unique avec toi</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">💭</div>
+                    <h3>Tes "rien"</h3>
+                    <p>Quand je demande "Ça va ?" et que tu réponds "Rien..." alors qu'il y a clairement quelque chose
+                        😂</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">⏰</div>
+                    <h3>Ton "5 minutes"</h3>
+                    <p>Qui se transforme mystérieusement en 45 minutes, mais tu es toujours magnifique après</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">🍕</div>
+                    <h3>Tes choix impossibles</h3>
+                    <p>"Je sais pas, choisis toi" puis "Non pas ça" 😄 Mais on finit toujours par trouver</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">❄️</div>
+                    <h3>Toujours froid</h3>
+                    <p>Même en plein été, tu as froid. Mais ça me donne une excuse pour te serrer dans mes bras</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">📱</div>
+                    <h3>Tes 1000 photos</h3>
+                    <p>De la même chose, sous 47 angles différents. Mais au moins on a des souvenirs !</p>
+                </div>
+
+                <div class="reason-card">
+                    <div class="reason-icon">💕</div>
+                    <h3>Ton grand cœur</h3>
+                    <p>Malgré tout, tu es la personne la plus attentionnée et aimante que je connaisse</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section CTA Final -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Prête pour la suite ?</h2>
+                <p class="cta-text">
+                    J'ai rassemblé toutes tes plus belles photos et vidéos...
+                </p>
+                <a href="memories.html" class="cta-button-large">
+                    Voir tes photos
+                    <span class="sparkle">✨</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Audio -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="particles.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

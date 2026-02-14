@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Moments Vidéo 🎬</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+
+<body class="videos-page">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/logo.svg" alt="Mélène Logo" class="logo-img">
+                <span>Mélène</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="memories.html">Tes Photos</a></li>
+                <li><a href="letter.html">Ma Lettre</a></li>
+                <li><a href="videos.html" class="active">Tes Vidéos</a></li>
+                <li><a href="finale.html">Surprise</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Carrousel Vidéo -->
+    <section class="video-carousel-section">
+        <div class="carousel-container">
+            <!-- Vidéo principale -->
+            <div class="main-video-container">
+                <video id="mainVideo" controls playsinline>
+                    <source id="mainVideoSource" src="assets/video_2026-02-13_19-13-28.mp4" type="video/mp4">
+                </video>
+                <div class="video-info">
+                    <h2 id="videoTitle">Toi 1</h2>
+                    <p id="videoCounter">Vidéo 1 / 21</p>
+                </div>
+            </div>
+
+            <!-- Contrôles -->
+            <div class="carousel-controls">
+                <button class="carousel-btn prev-btn" id="prevBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                </button>
+                <button class="carousel-btn next-btn" id="nextBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Miniatures -->
+            <div class="thumbnails-container">
+                <div class="thumbnails-scroll" id="thumbnailsScroll">
+                    <!-- Les miniatures seront générées par JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Prête pour la surprise finale ?</h2>
+                <p class="cta-text">J'ai gardé le meilleur pour la fin...</p>
+                <a href="finale.html" class="cta-button-large">
+                    Découvrir la surprise
+                    <span class="sparkle">🎁</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Liste des vidéos (23 vidéos restantes)
+        const videos = [
+            { src: 'assets/video_2026-02-13_19-13-28.mp4', title: 'Toi 1' },
+            { src: 'assets/video_2026-02-13_19-13-36.mp4', title: 'Toi 2' },
+            { src: 'assets/video_2026-02-13_19-13-45.mp4', title: 'Toi 3' },
+            { src: 'assets/video_2026-02-13_19-13-49.mp4', title: 'Toi 4' },
+            { src: 'assets/video_2026-02-13_19-13-54.mp4', title: 'Toi 5' },
+            { src: 'assets/video_2026-02-13_19-13-57.mp4', title: 'Toi 6' },
+            { src: 'assets/video_2026-02-13_19-14-02.mp4', title: 'Toi 7' },
+            { src: 'assets/video_2026-02-13_19-14-14.mp4', title: 'Toi 8' },
+            { src: 'assets/video_2026-02-13_19-14-19.mp4', title: 'Toi 9' },
+            { src: 'assets/video_2026-02-13_19-14-24.mp4', title: 'Toi 10' },
+            { src: 'assets/video_2026-02-13_19-14-30.mp4', title: 'Toi 11' },
+            { src: 'assets/video_2026-02-13_19-14-34.mp4', title: 'Toi 12' },
+            { src: 'assets/video_2026-02-13_19-14-39.mp4', title: 'Toi 13' },
+            { src: 'assets/video_2026-02-13_19-14-44.mp4', title: 'Toi 14' },
+            { src: 'assets/video_2026-02-13_19-14-53.mp4', title: 'Toi 15' },
+            { src: 'assets/video_2026-02-13_19-14-57.mp4', title: 'Toi 16' },
+            { src: 'assets/video_2026-02-13_19-15-08.mp4', title: 'Toi 17' },
+            { src: 'assets/video_2026-02-13_19-15-12.mp4', title: 'Toi 18' },
+            { src: 'assets/video_2026-02-13_19-15-17.mp4', title: 'Toi 19' },
+            { src: 'assets/video_2026-02-13_19-15-21.mp4', title: 'Toi 20' },
+            { src: 'assets/video_2026-02-13_19-15-26.mp4', title: 'Toi 21' },
+        ];
+
+        let currentIndex = 0;
+        const mainVideo = document.getElementById('mainVideo');
+        const mainVideoSource = document.getElementById('mainVideoSource');
+        const videoTitle = document.getElementById('videoTitle');
+        const videoCounter = document.getElementById('videoCounter');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const thumbnailsScroll = document.getElementById('thumbnailsScroll');
+
+        // Générer les miniatures
+        function generateThumbnails() {
+            videos.forEach((video, index) => {
+                const thumb = document.createElement('div');
+                thumb.className = 'thumbnail-item' + (index === 0 ? ' active' : '');
+                thumb.innerHTML = `
+                    <video muted playsinline>
+                        <source src="${video.src}" type="video/mp4">
+                    </video>
+                    <div class="thumbnail-overlay">${index + 1}</div>
+                `;
+                thumb.addEventListener('click', () => loadVideo(index));
+                thumbnailsScroll.appendChild(thumb);
+            });
+        }
+
+        // Charger une vidéo
+        function loadVideo(index) {
+            currentIndex = index;
+            mainVideoSource.src = videos[index].src;
+            mainVideo.load();
+            videoTitle.textContent = videos[index].title;
+            videoCounter.textContent = `Vidéo ${index + 1} / ${videos.length}`;
+
+            // Mettre à jour les miniatures
+            document.querySelectorAll('.thumbnail-item').forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === index);
+            });
+
+            // Scroll vers la miniature active
+            const activeThumb = document.querySelectorAll('.thumbnail-item')[index];
+            activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+
+        // Navigation
+        prevBtn.addEventListener('click', () => {
+            const newIndex = currentIndex > 0 ? currentIndex - 1 : videos.length - 1;
+            loadVideo(newIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            const newIndex = currentIndex < videos.length - 1 ? currentIndex + 1 : 0;
+            loadVideo(newIndex);
+        });
+
+        // Clavier
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevBtn.click();
+            if (e.key === 'ArrowRight') nextBtn.click();
+        });
+
+        // Initialiser
+        generateThumbnails();
+    </script>
+    <script src="script.js"></script>
+</body>
+
+</html>

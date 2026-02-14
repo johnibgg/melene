@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Souvenirs ❤️ | Galerie</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+
+<body class="memories-page">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/logo.svg" alt="Mélène Logo" class="logo-img">
+                <span>Mélène</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="memories.html" class="active">Tes Photos</a></li>
+                <li><a href="letter.html">Ma Lettre</a></li>
+                <li><a href="videos.html">Tes Vidéos</a></li>
+                <li><a href="finale.html">Surprise</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="page-title">Tes Plus Beaux Moments</h1>
+            <p class="page-subtitle">Parce que tu es magnifique, et je voulais te le montrer</p>
+        </div>
+    </header>
+
+    <!-- Filtres -->
+    <div class="filters-container">
+        <div class="container">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">Tout voir</button>
+                <button class="filter-btn" data-filter="photos">Photos</button>
+                <button class="filter-btn" data-filter="videos">Vidéos</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Galerie -->
+    <section class="gallery-section">
+        <div class="container">
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Photos -->
+                <div class="gallery-item photos" data-type="photo">
+                    <div class="gallery-card">
+                        <img src="assets/photo_2026-02-13_19-11-41.jpg" alt="Mélène 1" loading="lazy">
+                        <div class="gallery-overlay">
+                            <button class="view-btn" onclick="openLightbox(0)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item photos" data-type="photo">
+                    <div class="gallery-card">
+                        <img src="assets/photo_2026-02-13_19-12-24.jpg" alt="Mélène 2" loading="lazy">
+                        <div class="gallery-overlay">
+                            <button class="view-btn" onclick="openLightbox(1)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item photos" data-type="photo">
+                    <div class="gallery-card">
+                        <img src="assets/photo_2026-02-13_19-13-32.jpg" alt="Mélène 3" loading="lazy">
+                        <div class="gallery-overlay">
+                            <button class="view-btn" onclick="openLightbox(2)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item photos" data-type="photo">
+                    <div class="gallery-card">
+                        <img src="assets/photo_2026-02-13_19-13-41.jpg" alt="Mélène 4" loading="lazy">
+                        <div class="gallery-overlay">
+                            <button class="view-btn" onclick="openLightbox(3)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item photos" data-type="photo">
+                    <div class="gallery-card">
+                        <img src="assets/photo_2026-02-13_19-14-09.jpg" alt="Mélène 5" loading="lazy">
+                        <div class="gallery-overlay">
+                            <button class="view-btn" onclick="openLightbox(4)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item photos" data-type="photo">
+                    <div class="gallery-card">
+                        <img src="assets/photo_2026-02-13_19-14-49.jpg" alt="Mélène 6" loading="lazy">
+                        <div class="gallery-overlay">
+                            <button class="view-btn" onclick="openLightbox(5)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item photos" data-type="photo">
+                    <div class="gallery-card">
+                        <img src="assets/photo_2026-02-13_19-15-03.jpg" alt="Mélène 7" loading="lazy">
+                        <div class="gallery-overlay">
+                            <button class="view-btn" onclick="openLightbox(6)">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vidéos (15 premières) -->
+                <div class="gallery-item videos" data-type="video">
+                    <div class="gallery-card video-card">
+                        <video src="assets/video_2026-02-13_19-11-46.mp4" muted loop playsinline></video>
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item videos" data-type="video">
+                    <div class="gallery-card video-card">
+                        <video src="assets/video_2026-02-13_19-11-53.mp4" muted loop playsinline></video>
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item videos" data-type="video">
+                    <div class="gallery-card video-card">
+                        <video src="assets/video_2026-02-13_19-11-58.mp4" muted loop playsinline></video>
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item videos" data-type="video">
+                    <div class="gallery-card video-card">
+                        <video src="assets/video_2026-02-13_19-12-07.mp4" muted loop playsinline></video>
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item videos" data-type="video">
+                    <div class="gallery-card video-card">
+                        <video src="assets/video_2026-02-13_19-12-16.mp4" muted loop playsinline></video>
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item videos" data-type="video">
+                    <div class="gallery-card video-card">
+                        <video src="assets/video_2026-02-13_19-12-29.mp4" muted loop playsinline></video>
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item videos" data-type="video">
+                    <div class="gallery-card video-card">
+                        <video src="assets/video_2026-02-13_19-12-35.mp4" muted loop playsinline></video>
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item videos" data-type="video">
+                    <div class="gallery-card video-card">
+                        <video src="assets/video_2026-02-13_19-12-39.mp4" muted loop playsinline></video>
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item videos" data-type="video">
+                    <div class="gallery-card video-card">
+                        <video src="assets/video_2026-02-13_19-12-44.mp4" muted loop playsinline></video>
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item videos" data-type="video">
+                    <div class="gallery-card video-card">
+                        <video src="assets/video_2026-02-13_19-12-48.mp4" muted loop playsinline></video>
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item videos" data-type="video">
+                    <div class="gallery-card video-card">
+                        <video src="assets/video_2026-02-13_19-12-54.mp4" muted loop playsinline></video>
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item videos" data-type="video">
+                    <div class="gallery-card video-card">
+                        <video src="assets/video_2026-02-13_19-12-59.mp4" muted loop playsinline></video>
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item videos" data-type="video">
+                    <div class="gallery-card video-card">
+                        <video src="assets/video_2026-02-13_19-13-04.mp4" muted loop playsinline></video>
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item videos" data-type="video">
+                    <div class="gallery-card video-card">
+                        <video src="assets/video_2026-02-13_19-13-08.mp4" muted loop playsinline></video>
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-item videos" data-type="video">
+                    <div class="gallery-card video-card">
+                        <video src="assets/video_2026-02-13_19-13-13.mp4" muted loop playsinline></video>
+                        <div class="play-overlay">
+                            <div class="play-icon">▶</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" onclick="closeLightbox()">×</button>
+        <button class="lightbox-prev" onclick="prevImage()">‹</button>
+        <button class="lightbox-next" onclick="nextImage()">›</button>
+        <div class="lightbox-content">
+            <img id="lightboxImage" src="" alt="">
+        </div>
+    </div>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Encore plus de toi...</h2>
+                <p class="cta-text">Découvre toutes tes vidéos dans la page suivante</p>
+                <a href="videos.html" class="cta-button-large">
+                    Voir les vidéos
+                    <span class="sparkle">🎬</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
