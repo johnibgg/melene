@@ -58,7 +58,9 @@ class ValentineSite {
         const bgMusic = document.getElementById('bgMusic');
 
         if (musicToggle && bgMusic) {
-            let isPlaying = localStorage.getItem('musicPlaying') === 'true';
+            // Préserver le choix utilisateur : par défaut ON à la première visite
+            const storedPref = localStorage.getItem('musicPlaying');
+            let isPlaying = storedPref === null ? true : (storedPref === 'true');
             let currentTime = parseFloat(localStorage.getItem('musicTime')) || 0;
 
             // Set initial time
@@ -75,6 +77,12 @@ class ValentineSite {
             };
 
             updateUI();
+
+            // Tentative d'autoplay immédiat (certaines navigateurs peuvent l'empêcher)
+            if (isPlaying && bgMusic.paused) {
+                bgMusic.play().catch(e => console.log('Autoplay prevented'));
+                updateUI();
+            }
 
             musicToggle.addEventListener('click', () => {
                 if (isPlaying) {
@@ -95,7 +103,7 @@ class ValentineSite {
                 }
             }, 1000);
 
-            // Auto-play on first interaction if it was playing before
+            // Auto-play on first interaction if autoplay was prevented
             const startMusic = () => {
                 if (isPlaying && bgMusic.paused) {
                     bgMusic.play().catch(e => console.log('Autoplay prevented'));
