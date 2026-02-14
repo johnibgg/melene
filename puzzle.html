@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petit Jeu pour Toi ❤️</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+</head>
+
+<body class="puzzle-page">
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/logo.svg" alt="Mélène Logo" class="logo-img">
+                <span>Mélène</span>
+            </div>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="memories.html">Tes Photos</a></li>
+                <li><a href="letter.html">Ma Lettre</a></li>
+                <li><a href="videos.html">Tes Vidéos</a></li>
+                <li><a href="puzzle.html" class="active">Petit Jeu</a></li>
+                <li><a href="finale.html">Surprise</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Puzzle Section -->
+    <section class="puzzle-section">
+        <div class="container">
+            <h1 class="section-title centered">Un petit défi...</h1>
+            <p class="section-subtitle">Reconstitue cette photo pour voir ton beau sourire !</p>
+
+            <div class="puzzle-container">
+                <div class="puzzle-stats">
+                    <div class="stat">Mouvements: <span id="movesCount">0</span></div>
+                    <div class="stat">Temps: <span id="timer">00:00</span></div>
+                </div>
+
+                <div class="puzzle-board" id="puzzleBoard">
+                    <!-- Tiles injected by JS -->
+                </div>
+
+                <div class="puzzle-controls">
+                    <button class="puzzle-btn" id="shuffleBtn">Mélanger</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Win Message Overlay -->
+    <div class="win-message" id="winMessage">
+        <h2>Félicitations ! 🎉</h2>
+        <p>Tu es trop forte (et trop belle) !</p>
+        <div class="puzzle-controls">
+            <button class="puzzle-btn" onclick="location.reload()">Rejouer</button>
+            <a href="finale.html" class="puzzle-btn">Voir la surprise →</a>
+        </div>
+    </div>
+
+    <!-- Contrôle de musique -->
+    <div class="music-controls">
+        <button id="musicToggle" aria-label="Musique">
+            ♫
+        </button>
+    </div>
+
+    <!-- Audio -->
+    <audio id="bgMusic" loop>
+        <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+    <script src="puzzle.js"></script>
+</body>
+
+</html>

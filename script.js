@@ -6,7 +6,7 @@ class ValentineSite {
     constructor() {
         this.init();
     }
-    
+
     init() {
         this.setupNavigation();
         this.setupMusicControl();
@@ -15,23 +15,23 @@ class ValentineSite {
         this.setupVideoHover();
         this.setupParallax();
         this.setupScrollAnimations();
-        
+
         console.log('💝 Valentine\'s Site Loaded with Love!');
     }
-    
+
     // ===================================
     // NAVIGATION
     // ===================================
     setupNavigation() {
         const navToggle = document.getElementById('navToggle');
         const navMenu = document.getElementById('navMenu');
-        
+
         if (navToggle && navMenu) {
             navToggle.addEventListener('click', () => {
                 navMenu.classList.toggle('active');
                 navToggle.classList.toggle('active');
             });
-            
+
             // Close menu when clicking on a link
             navMenu.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
@@ -39,7 +39,7 @@ class ValentineSite {
                     navToggle.classList.remove('active');
                 });
             });
-            
+
             // Close menu when clicking outside
             document.addEventListener('click', (e) => {
                 if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
@@ -49,65 +49,81 @@ class ValentineSite {
             });
         }
     }
-    
+
     // ===================================
     // MUSIC CONTROL
     // ===================================
     setupMusicControl() {
         const musicToggle = document.getElementById('musicToggle');
         const bgMusic = document.getElementById('bgMusic');
-        
+
         if (musicToggle && bgMusic) {
-            let isPlaying = false;
-            
+            let isPlaying = localStorage.getItem('musicPlaying') === 'true';
+            let currentTime = parseFloat(localStorage.getItem('musicTime')) || 0;
+
+            // Set initial time
+            bgMusic.currentTime = currentTime;
+
+            const updateUI = () => {
+                if (isPlaying) {
+                    musicToggle.textContent = '⏸';
+                    musicToggle.style.opacity = '1';
+                } else {
+                    musicToggle.textContent = '♫';
+                    musicToggle.style.opacity = '0.6';
+                }
+            };
+
+            updateUI();
+
             musicToggle.addEventListener('click', () => {
                 if (isPlaying) {
                     bgMusic.pause();
-                    musicToggle.textContent = '♫';
-                    musicToggle.style.opacity = '0.6';
+                    isPlaying = false;
                 } else {
-                    bgMusic.play().catch(e => {
-                        console.log('Music autoplay prevented');
-                    });
-                    musicToggle.textContent = '⏸';
-                    musicToggle.style.opacity = '1';
-                }
-                isPlaying = !isPlaying;
-            });
-            
-            // Auto-play on first interaction
-            let hasInteracted = false;
-            const startMusic = () => {
-                if (!hasInteracted) {
-                    bgMusic.play().catch(e => console.log('Autoplay prevented'));
-                    musicToggle.textContent = '⏸';
-                    musicToggle.style.opacity = '1';
-                    hasInteracted = true;
+                    bgMusic.play().catch(e => console.log('Music autoplay prevented'));
                     isPlaying = true;
                 }
+                localStorage.setItem('musicPlaying', isPlaying);
+                updateUI();
+            });
+
+            // Periodically save current time
+            setInterval(() => {
+                if (!bgMusic.paused) {
+                    localStorage.setItem('musicTime', bgMusic.currentTime);
+                }
+            }, 1000);
+
+            // Auto-play on first interaction if it was playing before
+            const startMusic = () => {
+                if (isPlaying && bgMusic.paused) {
+                    bgMusic.play().catch(e => console.log('Autoplay prevented'));
+                    updateUI();
+                }
             };
-            
+
             document.addEventListener('click', startMusic, { once: true });
             document.addEventListener('scroll', startMusic, { once: true });
         }
     }
-    
+
     // ===================================
     // GALLERY FILTERS
     // ===================================
     setupGallery() {
         const filterBtns = document.querySelectorAll('.filter-btn');
         const galleryItems = document.querySelectorAll('.gallery-item');
-        
+
         if (filterBtns.length > 0) {
             filterBtns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     // Update active button
                     filterBtns.forEach(b => b.classList.remove('active'));
                     btn.classList.add('active');
-                    
+
                     const filter = btn.dataset.filter;
-                    
+
                     // Filter items
                     galleryItems.forEach(item => {
                         if (filter === 'all' || item.classList.contains(filter)) {
@@ -128,27 +144,27 @@ class ValentineSite {
             });
         }
     }
-    
+
     // ===================================
     // LIGHTBOX
     // ===================================
     setupLightbox() {
         this.currentImageIndex = 0;
         this.images = Array.from(document.querySelectorAll('.gallery-item.photos img')).map(img => img.src);
-        
+
         // Make functions global for onclick handlers
         window.openLightbox = (index) => {
             this.currentImageIndex = index;
             const lightbox = document.getElementById('lightbox');
             const lightboxImage = document.getElementById('lightboxImage');
-            
+
             if (lightbox && lightboxImage) {
                 lightboxImage.src = this.images[index];
                 lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
         };
-        
+
         window.closeLightbox = () => {
             const lightbox = document.getElementById('lightbox');
             if (lightbox) {
@@ -156,17 +172,17 @@ class ValentineSite {
                 document.body.style.overflow = '';
             }
         };
-        
+
         window.nextImage = () => {
             this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
             document.getElementById('lightboxImage').src = this.images[this.currentImageIndex];
         };
-        
+
         window.prevImage = () => {
             this.currentImageIndex = (this.currentImageIndex - 1 + this.images.length) % this.images.length;
             document.getElementById('lightboxImage').src = this.images[this.currentImageIndex];
         };
-        
+
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             const lightbox = document.getElementById('lightbox');
@@ -176,7 +192,7 @@ class ValentineSite {
                 if (e.key === 'ArrowLeft') window.prevImage();
             }
         });
-        
+
         // Click outside to close
         const lightbox = document.getElementById('lightbox');
         if (lightbox) {
@@ -187,26 +203,26 @@ class ValentineSite {
             });
         }
     }
-    
+
     // ===================================
     // VIDEO HOVER EFFECTS
     // ===================================
     setupVideoHover() {
         const videoCards = document.querySelectorAll('.video-card');
-        
+
         videoCards.forEach(card => {
             const video = card.querySelector('video');
-            
+
             if (video) {
                 card.addEventListener('mouseenter', () => {
                     video.play().catch(e => console.log('Video play prevented'));
                 });
-                
+
                 card.addEventListener('mouseleave', () => {
                     video.pause();
                     video.currentTime = 0;
                 });
-                
+
                 // Click to play/pause
                 card.addEventListener('click', () => {
                     if (video.paused) {
@@ -220,17 +236,17 @@ class ValentineSite {
             }
         });
     }
-    
+
     // ===================================
     // PARALLAX EFFECT
     // ===================================
     setupParallax() {
         const parallaxLayers = document.querySelectorAll('.parallax-layer');
-        
+
         if (parallaxLayers.length > 0) {
             window.addEventListener('scroll', () => {
                 const scrolled = window.pageYOffset;
-                
+
                 parallaxLayers.forEach((layer, index) => {
                     const speed = (index + 1) * 0.3;
                     layer.style.transform = `translateY(${scrolled * speed}px)`;
@@ -238,7 +254,7 @@ class ValentineSite {
             });
         }
     }
-    
+
     // ===================================
     // SCROLL ANIMATIONS
     // ===================================
@@ -247,7 +263,7 @@ class ValentineSite {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
         };
-        
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -256,7 +272,7 @@ class ValentineSite {
                 }
             });
         }, observerOptions);
-        
+
         // Observe elements
         const animatedElements = document.querySelectorAll('.reason-card, .stat-item, .gallery-item');
         animatedElements.forEach(el => observer.observe(el));
@@ -316,11 +332,11 @@ const konamiPattern = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLef
 document.addEventListener('keydown', (e) => {
     konamiCode.push(e.key);
     konamiCode = konamiCode.slice(-10);
-    
+
     if (konamiCode.join(',') === konamiPattern.join(',')) {
         // Secret animation!
         document.body.style.animation = 'rainbow 2s linear infinite';
-        
+
         const style = document.createElement('style');
         style.textContent = `
             @keyframes rainbow {
@@ -329,12 +345,12 @@ document.addEventListener('keydown', (e) => {
             }
         `;
         document.head.appendChild(style);
-        
+
         setTimeout(() => {
             document.body.style.animation = '';
             style.remove();
         }, 5000);
-        
+
         console.log('🎉 Easter Egg Activated! 🎉');
     }
 });
